@@ -56,7 +56,7 @@ new Vue({
         // Fetches lessons from the backend API
         async fetchLessons() {
             try {
-                const response = await fetch('http://localhost:3000/lessons');
+                const response = await fetch('https://test-back-end-lc2z.onrender.com/lessons');
                 this.lessons = await response.json(); // Update lessons data
             } catch (error) {
                 console.error('Error fetching lessons:', error);
@@ -64,7 +64,7 @@ new Vue({
         },
         // Fetches placed orders from the backend API
         async fetchOrders() {
-            const response = await fetch('http://localhost:3000/order_placed');
+            const response = await fetch('https://test-back-end-lc2z.onrender.com/order_placed');
             this.orders = await response.json(); // Update orders data
         },
 
@@ -77,7 +77,7 @@ new Vue({
                 total: this.totalPrice // Total price of the cart
             };
 
-            const response = await fetch('http://localhost:3000/order_placed', {
+            const response = await fetch('https://test-back-end-lc2z.onrender.com/order_placed', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(order) // Send order details to the backend
@@ -91,7 +91,7 @@ new Vue({
                 }));
 
                 // Send updated spaces to the backend
-                await fetch('http://localhost:3000/lessons/updateSpaces', {
+                await fetch('https://test-back-end-lc2z.onrender.com/lessons/updateSpaces', {
                     method: 'PUT',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(spaceUpdates)
@@ -124,7 +124,7 @@ new Vue({
         async addLesson() {
             if (this.newLesson.subject && this.newLesson.location && this.newLesson.price && this.newLesson.spaces) {
                 try {
-                    const response = await fetch('http://localhost:3000/lessons', {
+                    const response = await fetch('https://test-back-end-lc2z.onrender.com/lessons', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify(this.newLesson) // Send new lesson details
